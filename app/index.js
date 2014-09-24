@@ -82,6 +82,8 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
     var scriptExt = this.coffee ? 'coffee' : 'js';
     this.copy('main.' + scriptExt, 'app/scripts/main.' + scriptExt);
 
+    this.template('_Gulpfile.js', 'Gulpfile.js');
+
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
   },
