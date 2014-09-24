@@ -53,15 +53,12 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
       for (var option in props){
           this[option] = props[option];
       }
-      //this.someOption = props.someOption;
 
       done();
     }.bind(this));
   },
 
   app: function () {
-    //this.mkdir('app');
-    //this.mkdir('app/templates');
     this.mkdir('app/bower_components');
     this.mkdir('app/images');
 
