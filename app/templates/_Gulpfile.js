@@ -18,7 +18,7 @@ var gulp = require('gulp'),
         <% if (coffee) { %>
         coffee: folders.app + '/**/*.coffee',
         <% } %>
-        styles: folders.app + '/**/*.{<% if(css == "Scss"){ %>scss,sass,<% } else if (css == "Less"){ %>less,<% } %>css}',
+        styles: folders.app + '/**/*.{<% if(css == "scss"){ %>scss,sass,<% } else if (css == "less"){ %>less,<% } %>css}',
         image: folders.app + '/**/*.{png,jpeg,jpg,gif,svg}'
     },
     ignore_dir = ['!' + folders.app + '/{bower_components,bower_components/**}'];
@@ -44,7 +44,7 @@ gulp.task('templates', function() {
     return gulp.src(globs.templates)
                .pipe($.plumber())
                <% if (jade) { %>
-               .pipe($.if('*.jade', $.jade({pretty: true}))) // Useref reads files line-by-line: jonkemp/gulp-useref#29 
+               .pipe($.if('*.jade', $.jade({pretty: true}))) // Useref reads files line-by-line: jonkemp/gulp-useref#29
                <% } %>
                .pipe($.if(isDev, gulp.dest(folders.tmp)))
                .pipe($.if(isDev, reload({stream: true})))
@@ -116,7 +116,7 @@ gulp.task('watch', function() {
     for (var key in globs) {
         $.watch({glob: globs[key], name: key}, [key]);
     }
-    
+
     $.watch({glob: 'bower.json', name: 'Wiredep'}, ['wiredep']);
 });
 
