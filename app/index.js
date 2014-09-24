@@ -71,7 +71,10 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
         this.copy('index.jade', 'app/index.jade');
     } else {
         var indexTemplate = this.src.read('index.jade');
-        var index = jade.render(indexTemplate, {filename: path.join(this.sourceRoot(), 'index.jade'), pretty: true});
+        var index = jade.render(indexTemplate,{
+                                                filename: path.join(this.sourceRoot(), 'index.jade'),
+                                                pretty: true
+                                              });
         this.dest.write('app/index.html', index)
     }
 
