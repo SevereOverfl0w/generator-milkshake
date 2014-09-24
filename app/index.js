@@ -31,7 +31,7 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
           name: 'css',
           message: 'Which CSS preprocessor would you like use?',
           choices: ['css', 'less', 'scss'],
-          default: 'less' 
+          default: 'less'
         },
         {
           type: 'confirm',
@@ -61,6 +61,7 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
     //this.mkdir('app');
     //this.mkdir('app/templates');
     this.mkdir('app/bower_components');
+    this.mkdir('app/images');
 
     // Jade/HTML
     if (this.jade){
