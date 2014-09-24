@@ -83,9 +83,9 @@ gulp.task('coffee', function() {
 gulp.task('styles', function() {
     return gulp.src(globs.styles)
                .pipe($.plumber())
-               <% if (css == 'Scss') { %>
+               <% if (css == 'scss') { %>
                .pipe($.if('**/*.{scss|sass}', $.sass({errLogToConsole: true}))) // gulp-sass errors wrongly?
-               <% } else if(css == 'Less') { %>
+               <% } else if(css == 'less') { %>
                .pipe($.if('*.less', $.less()))
                <% } %>
                .pipe($.autoprefixer())
