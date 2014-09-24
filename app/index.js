@@ -4,6 +4,8 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
+var jade = require('jade');
+var file = yeoman.file;
 
 // hic sunt dracones
 
@@ -68,7 +70,9 @@ var MilkshakeGenerator = yeoman.generators.Base.extend({
         this.copy('layout.jade', 'app/layout.jade');
         this.copy('index.jade', 'app/index.jade');
     } else {
-        this.copy('index.html', 'app/index.html');
+        var indexTemplate = this.src.read('index.jade');
+        var index = jade.render(indexTemplate, {filename: this.sourceRoot() + '/index.jade', pretty: true});
+        this.dest.write('app/index.html', index)
     }
 
     // Styles
