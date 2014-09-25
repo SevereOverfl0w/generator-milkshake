@@ -81,11 +81,15 @@ gulp.task('coffee', function() {
 <% } %>
 
 gulp.task('styles', function() {
+    <% if(css == 'less') { %>
+    underscoreFilter = $.filter('!**/_*.less');
+    <% } %>
     return gulp.src(globs.styles)
                .pipe($.plumber())
                <% if (css == 'scss') { %>
                .pipe($.if('**/*.{scss|sass}', $.sass({errLogToConsole: true}))) // gulp-sass errors wrongly?
                <% } else if(css == 'less') { %>
+               .pipe(underscoreFilter)
                .pipe($.if('*.less', $.less()))
                <% } %>
                .pipe($.autoprefixer())
